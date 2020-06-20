@@ -1,7 +1,6 @@
 # jq
 
 [![GoDoc](https://godoc.org/github.com/savaki/jq?status.svg)](https://godoc.org/github.com/savaki/jq)
-[![Build Status](https://snap-ci.com/savaki/jq/branch/master/build_image)](https://snap-ci.com/savaki/jq/branch/master)
 
 A high performance Golang implementation of the incredibly useful jq command line tool.
 
@@ -13,27 +12,33 @@ desired []byte.  Ops may be chained together to form a transformation chain simi
 
 ## Installation
 
-```
-go get github.com/savaki/jq
+因为作者的[原仓库](https://github.com/savaki/jq)已不在维护，所以 fork 了一下。以支持 go mod 及一些新功能。
+
+```bash
+
+go get github.com/zgljl2012/jq
+
 ```
 
 ## Example
 
 ```go
+
 package main
 
 import (
-	"fmt"
+  "fmt"
 
-	"github.com/savaki/jq"
+  "github.com/savaki/jq"
 )
 
 func main() {
-	op, _ := jq.Parse(".hello")           // create an Op
-	data := []byte(`{"hello":"world"}`)   // sample input
-	value, _ := op.Apply(data)            // value == '"world"'
-	fmt.Println(string(value))
+  op, _ := jq.Parse(".hello")           // create an Op
+  data := []byte(`{"hello":"world"}`)   // sample input
+  value, _ := op.Apply(data)            // value == '"world"'
+  fmt.Println(string(value))
 }
+
 ```
 
 ## Syntax
@@ -52,6 +57,7 @@ The initial goal is to support all the selectors the original jq command line su
 ## Examples
 
 ### Data
+
 ```json
 {
   "string": "a",
@@ -82,7 +88,8 @@ The initial goal is to support all the selectors the original jq command line su
 
 ## Performance
 
-```
+```text
+
 BenchmarkAny-8         	20000000	        80.8 ns/op	       0 B/op	       0 allocs/op
 BenchmarkArray-8       	20000000	       108 ns/op	       0 B/op	       0 allocs/op
 BenchmarkFindIndex-8   	10000000	       125 ns/op	       0 B/op	       0 allocs/op
@@ -91,5 +98,6 @@ BenchmarkFindRange-8   	10000000	       186 ns/op	      16 B/op	       1 allocs/
 BenchmarkNumber-8      	50000000	        28.9 ns/op	       0 B/op	       0 allocs/op
 BenchmarkObject-8      	20000000	        98.5 ns/op	       0 B/op	       0 allocs/op
 BenchmarkString-8      	30000000	        40.4 ns/op	       0 B/op	       0 allocs/op
+
 ```
 
