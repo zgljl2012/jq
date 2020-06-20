@@ -47,6 +47,11 @@ func TestMerge(t *testing.T) {
 			s2:     `{"a":[{"c":1}]}`,
 			expect: `{"a":[{"a":1},{"b":1},{"c":1}]}`,
 		},
+		"complex case": {
+			s1:     `{"a":{"b":{"c":{"d":{"e":1}}}}}`,
+			s2:     `{"a":{"b":{"c":{"f":{"h":2}}}}}`,
+			expect: `{"a":{"b":{"c":{"d":{"e":1},"f":{"h":2}}}}}`,
+		},
 	}
 	for name, testcase := range testcases {
 		t.Run(name, func(t *testing.T) {
