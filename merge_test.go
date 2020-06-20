@@ -1,8 +1,9 @@
 package jq_test
 
 import (
-	"github/zgljl2012/jq"
 	"testing"
+
+	"github.com/zgljl2012/jq"
 )
 
 func TestMerge(t *testing.T) {

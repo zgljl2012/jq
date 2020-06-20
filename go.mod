@@ -1,4 +1,4 @@
-module github/zgljl2012/jq
+module github.com/zgljl2012/jq
 
 go 1.14
 
