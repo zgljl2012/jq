@@ -9,14 +9,14 @@ import (
 // if the value is a dict, then the value in b2 would override that in b1
 // else if the value is a array, then the value in b2 would append to that in b1
 func Merge(b1 []byte, b2 []byte) ([]byte, error) {
-	re, _ := regexp.Compile(`^\s*\{.*\}\s*$|^\s*\[.*\]\s*$`)
+	re, _ := regexp.Compile(`(?s)^\s*\{.*\}\s*$|(?s)^\s*\[.*\]\s*$`)
 	if !re.Match(b2) {
 		return b2, nil
 	}
 	if !re.Match(b1) {
 		return b1, nil
 	}
-	if matched, _ := regexp.Match(`^\s*{.*}\s*$`, b1); matched {
+	if matched, _ := regexp.Match(`(?s)^\s*{.*}\s*$`, b1); matched {
 		// if dict
 		var (
 			j1  map[string]json.RawMessage

@@ -52,6 +52,13 @@ func TestMerge(t *testing.T) {
 			s2:     `{"a":{"b":{"c":{"f":{"h":2}}}}}`,
 			expect: `{"a":{"b":{"c":{"d":{"e":1},"f":{"h":2}}}}}`,
 		},
+		"with \n": {
+			s1: `{
+				"a":1
+			}`,
+			s2:     `{"a":2}`,
+			expect: `{"a":2}`,
+		},
 	}
 	for name, testcase := range testcases {
 		t.Run(name, func(t *testing.T) {
