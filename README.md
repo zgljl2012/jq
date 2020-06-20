@@ -12,7 +12,7 @@ desired []byte.  Ops may be chained together to form a transformation chain simi
 
 ## Installation
 
-因为作者的[原仓库](https://github.com/savaki/jq)已不在维护，所以 fork 了一下。以支持 go mod 及一些新功能。
+Because the author no longer maintained the [repo](https://github.com/savaki/jq), so I forked it to support module and add more features.
 
 ```bash
 
