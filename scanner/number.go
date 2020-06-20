@@ -35,6 +35,4 @@ func Number(in []byte, pos int) (int, error) {
 			return pos, nil
 		}
 	}
-
-	return pos, nil
 }

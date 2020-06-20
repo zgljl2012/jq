@@ -29,7 +29,7 @@ package main
 import (
   "fmt"
 
-  "github.com/savaki/jq"
+  "github.com/zgljl2012/jq"
 )
 
 func main() {
@@ -37,6 +37,33 @@ func main() {
   data := []byte(`{"hello":"world"}`)   // sample input
   value, _ := op.Apply(data)            // value == '"world"'
   fmt.Println(string(value))
+}
+
+```
+
+### Merge
+
+Merge two JSON objects. When the key in json1 is the same as json2. Then
+
++ If the value is a dictionary, recursively merge
++ If the value is an array, append the array which in json2 to json1
++ If the value of json2 is not dict or array, then overide the key in json1
+
+```golang
+
+package main
+
+import (
+  "fmt"
+
+  "github.com/zgljl2012/jq"
+)
+
+func main() {
+  b1 := []byte(`{"a":1}`)
+  b2 := []byte(`{"b":2}`)
+  target, _ := jq.Marge(b1, b2)
+  fmt.Println(string(target))
 }
 
 ```

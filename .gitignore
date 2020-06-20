@@ -31,3 +31,5 @@ _testmain.go
 
 # ignore scratch files
 sample.json
+
+.vscode
